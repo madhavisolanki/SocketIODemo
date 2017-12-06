@@ -47,11 +47,12 @@ class SocketViewController: UIViewController {
     
     func getAllDriversLocation() {
         self.driverViewModel.getAllDriverLocation { coordinates in
-            print(coordinates.count)
-            let driverCoordinates = coordinates[0]
-            self.marker.map?.animate(to: GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude:driverCoordinates.latitude, longitude: driverCoordinates.longitude), zoom: 16.0))
-            self.marker.position = CLLocationCoordinate2D(latitude:driverCoordinates.latitude, longitude: driverCoordinates.longitude)
-            self.marker.icon = UIImage(named:"car-icon")
+            if coordinates.count > 0 {
+                let driverCoordinates = coordinates[0]
+                self.marker.map?.animate(to: GMSCameraPosition.camera(withTarget: CLLocationCoordinate2D(latitude:driverCoordinates.latitude, longitude: driverCoordinates.longitude), zoom: 16.0))
+                self.marker.position = CLLocationCoordinate2D(latitude:driverCoordinates.latitude, longitude: driverCoordinates.longitude)
+                self.marker.icon = UIImage(named:"car-icon")
+            }
         }
     }
 }
