@@ -16,8 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //Add Google Maps key
         GMSServices.provideAPIKey("AIzaSyBiEoi4Y88OYpgt2ZqB1G9mmHhsy6VNSlg")
-
+        
+        //Establishing socket connection
+        let socketClient = SocketClient.sharedInstance
+        socketClient.connect()
+        
         // Override point for customization after application launch.
         return true
     }

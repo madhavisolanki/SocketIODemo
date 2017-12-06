@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 public class UserViewModel {
-    let socketClient: SocketClient = SocketClient()
+    let socketClient = SocketClient.sharedInstance
+    
     func loginUser(_ latitude: String, _ longitude:String){
-        self.makeSocketConnection()
         let user: User = User(email: "paraspahwa08@gmail.com",
                                  password: "123456",
                                  device_type: "IOS",
@@ -23,11 +23,7 @@ public class UserViewModel {
         
         self.loginWithSocket(user)
     }
-    
-    func makeSocketConnection(){
-        self.socketClient.connect()
-    }
-    
+
     func loginWithSocket(_ user:User){
         self.socketClient.login(user)
     }

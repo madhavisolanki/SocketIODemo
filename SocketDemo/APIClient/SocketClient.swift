@@ -12,59 +12,48 @@ import UIKit
 
 public class SocketClient {
    
-    let  manager = SocketManager(socketURL: URL(string: "http://107.174.238.50:10015/")!, config: [.log(false)])
+    let  manager = SocketManager(socketURL: URL(string: "http://107.174.238.50:10015/")!, config: [.log(true)])
     var socket:SocketIOClient?
     var user: User?
-    
+    static let sharedInstance = SocketClient()
+
     func connect(){
         self.socket = manager.defaultSocket
-        self.socket?.on(clientEvent: .connect) {data, ack in
-            self.socket?.emitWithAck("canUpdate", 1).timingOut(after: 0) {data in
-                self.socket?.emit("update", ["amount": 1 + 2.50])
-            }
-            ack.with("Got your currentAmount", "dude")
-            self.retryLogin()
-        }
-        
         self.socket?.connect()
-    }
-    
-    func retryLogin() {
-        let sendData = [[ "email":  user?.email,
-                              "password": user?.password,
-                              "device_type": user?.device_type,
-                              "device_token": "",
-                              "user_lat": user?.lat,
-                              "user_long": user?.long]]
-        self.socket?.emit("login", ["test","test"])
+        self.retryLogin() 
     }
     
     func login(_ user:User){
         self.user = user
     }
 
+    // MARK: - Login User
+    func retryLogin() {
+        self.socket?.emitWithAck("login", [ "email":  user?.email,
+                                            "password": user?.password,
+                                            "device_type": user?.device_type,
+                                            "device_token": "",
+                                            "user_lat": user?.lat,
+                                            "user_long": user?.long]).timingOut(after: 100, callback: { data in
+                                                print("Here is data\(data)")
+                                            })
     }
-
-
-// self.socket?.handleEvent("Login", data: sendData, isInternalMessage:true , withAck: 1)
-//self.socket?.on("AllDriverInfo") {data, ack in
-//    print("Hey \(data)")
-//}
-//Dict
-//["email": user.email,
-// "password": user.password,
-// "device_type": user.device_type,
-// "device_token": user.device_type,
-// "user_lat": user.lat,
-// "user_long": user.long]
-
-//JSON
-//{
-//    "email": "paraspahwa08@gmail.com",
-//    "password": "123456",
-//    "device_type": "IOS",
-//    "device_token": "",
-//    "user_lat": "1234.23",
-//    "user_long": "1234.23"
-//}
-
+    
+    // MARK: - Get All Driver Info
+    func getDriverInfo(completion: @escaping ([Any]) -> Void){
+        self.socket?.on("AllDriverInfo") { (dataArray, socketAck) -> Void in
+            completion(dataArray)
+            self.socket?.disconnect()
+        }
+    }
+    
+    // MARK: - Set Driver Info
+    func setDriverInfo(){
+        self.socket?.emitWithAck("AllDriver", [ "userID":  "59",
+                                            "userLat": user?.lat,
+                                            "userLng": user?.long,
+                                            "driverRequestID": "59"]).timingOut(after: 100, callback: { data in
+                                                print("Here is data\(data)")
+                                            })
+        }
+}
