@@ -7,45 +7,31 @@
 //
 
 import Foundation
-import Starscream
+import SocketIO
 import UIKit
 
 public class SocketClient {
-    
-    let socket = WebSocket(url: URL(string: "http://107.174.238.50:10015/")!)
    
+    let  manager = SocketManager(socketURL: URL(string: "http://107.174.238.50:10015/")!, config: [.log(false)])
+    var socket:SocketIOClient?
+    
     func connect(){
-        socket.delegate = self 
-        socket.onConnect = {
-            print("websocket is connected")
+        self.socket = manager.defaultSocket
+        self.socket?.on(clientEvent: .connect) {data, ack in
+            print("socket connected")
         }
-        //websocketDidDisconnect
-        socket.onDisconnect = { (error: Error?) in
-            print("websocket is disconnected: \(error?.localizedDescription)")
-        }
-        //websocketDidReceiveMessage
-        socket.onText = { (text: String) in
-            print("got some text: \(text)")
-        }
-        //websocketDidReceiveData
-        socket.onData = { (data: Data) in
-            print("got some data: \(data.count)")
-        }
-
-        socket.connect()
         
-    }
-    
-    func setAllDriverInfo(_driver: Driver){
+        self.socket?.on("currentAmount") {data, ack in
+            guard let cur = data[0] as? Double else { return }
+            
+            self.socket?.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
+                self.socket?.emit("update", ["amount": cur + 2.50])
+            }
+            
+            ack.with("Got your currentAmount", "dude")
+        }
         
-    }
-    
-    func getAllDriverInfo(_driver: Driver){
-        
-    }
-    
-    func pingServer(){
-        socket.write(string: "Hi Server!")
+        self.socket?.connect()
     }
     func login(_ user:User){
         let dict = [ "email":  user.email,
@@ -56,37 +42,14 @@ public class SocketClient {
                                                 "user_long": user.long]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-            self.socket.write(data: jsonData) {
-                print("Login")
-            }
+            
         } catch {
             print(error.localizedDescription)
         }
     }
 }
 
-extension SocketClient:WebSocketDelegate {
-    public func newBytesInStream() {
-        
-    }
-    
-    public func streamDidError(error: Error?) {
-        
-    }
-    
-    public func websocketDidConnect(socket: WebSocketClient) {
-        print("websocket is connected")
-    }
-    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        print("websocket is disconnected: \(error?.localizedDescription)")
-    }
-    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("got some text: \(text)")
-    }
-    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("got some data: \(data.count)")
-    }
-}
+
 //Dict
 //["email": user.email,
 // "password": user.password,

@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5F1E5DF89A12A2E78EBB2C64 /* Pods_SocketDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAC49739D2956EB6FA6693C /* Pods_SocketDemo.framework */; };
+		AB0E1E8F1FD783E80003D7E5 /* SocketBasicPacketTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E871FD783E60003D7E5 /* SocketBasicPacketTest.swift */; };
+		AB0E1E901FD783E80003D7E5 /* SocketIOClientConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E881FD783E70003D7E5 /* SocketIOClientConfigurationTest.swift */; };
+		AB0E1E911FD783E80003D7E5 /* SocketEngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E891FD783E70003D7E5 /* SocketEngineTest.swift */; };
+		AB0E1E921FD783E80003D7E5 /* SocketAckManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E8A1FD783E70003D7E5 /* SocketAckManagerTest.swift */; };
+		AB0E1E931FD783E80003D7E5 /* SocketMangerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E8B1FD783E70003D7E5 /* SocketMangerTest.swift */; };
+		AB0E1E941FD783E80003D7E5 /* SocketNamespacePacketTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E8C1FD783E70003D7E5 /* SocketNamespacePacketTest.swift */; };
+		AB0E1E951FD783E80003D7E5 /* SocketParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E8D1FD783E80003D7E5 /* SocketParserTest.swift */; };
+		AB0E1E961FD783E80003D7E5 /* SocketSideEffectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E1E8E1FD783E80003D7E5 /* SocketSideEffectTest.swift */; };
 		AB25E1DA1FD7635800D01856 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25E1D91FD7635800D01856 /* Driver.swift */; };
 		AB25E1DC1FD7636300D01856 /* DriverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25E1DB1FD7636300D01856 /* DriverViewModel.swift */; };
 		AB25E1DE1FD7642300D01856 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25E1DD1FD7642300D01856 /* UserViewModel.swift */; };
@@ -49,6 +57,14 @@
 		6E04960CCC8B61654532B9A7 /* Pods_SocketDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75771E06C056F57C642BD84A /* Pods_SocketDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CAC49739D2956EB6FA6693C /* Pods_SocketDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0E1E871FD783E60003D7E5 /* SocketBasicPacketTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketBasicPacketTest.swift; sourceTree = "<group>"; };
+		AB0E1E881FD783E70003D7E5 /* SocketIOClientConfigurationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOClientConfigurationTest.swift; sourceTree = "<group>"; };
+		AB0E1E891FD783E70003D7E5 /* SocketEngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketEngineTest.swift; sourceTree = "<group>"; };
+		AB0E1E8A1FD783E70003D7E5 /* SocketAckManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketAckManagerTest.swift; sourceTree = "<group>"; };
+		AB0E1E8B1FD783E70003D7E5 /* SocketMangerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMangerTest.swift; sourceTree = "<group>"; };
+		AB0E1E8C1FD783E70003D7E5 /* SocketNamespacePacketTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketNamespacePacketTest.swift; sourceTree = "<group>"; };
+		AB0E1E8D1FD783E80003D7E5 /* SocketParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketParserTest.swift; sourceTree = "<group>"; };
+		AB0E1E8E1FD783E80003D7E5 /* SocketSideEffectTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketSideEffectTest.swift; sourceTree = "<group>"; };
 		AB25E1D91FD7635800D01856 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		AB25E1DB1FD7636300D01856 /* DriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewModel.swift; sourceTree = "<group>"; };
 		AB25E1DD1FD7642300D01856 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +194,14 @@
 			isa = PBXGroup;
 			children = (
 				AB417B291FD754B20056CA6B /* SocketDemoTests.swift */,
+				AB0E1E8A1FD783E70003D7E5 /* SocketAckManagerTest.swift */,
+				AB0E1E871FD783E60003D7E5 /* SocketBasicPacketTest.swift */,
+				AB0E1E891FD783E70003D7E5 /* SocketEngineTest.swift */,
+				AB0E1E881FD783E70003D7E5 /* SocketIOClientConfigurationTest.swift */,
+				AB0E1E8B1FD783E70003D7E5 /* SocketMangerTest.swift */,
+				AB0E1E8C1FD783E70003D7E5 /* SocketNamespacePacketTest.swift */,
+				AB0E1E8D1FD783E80003D7E5 /* SocketParserTest.swift */,
+				AB0E1E8E1FD783E80003D7E5 /* SocketSideEffectTest.swift */,
 				AB417B2B1FD754B20056CA6B /* Info.plist */,
 			);
 			path = SocketDemoTests;
@@ -559,7 +583,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0E1E911FD783E80003D7E5 /* SocketEngineTest.swift in Sources */,
+				AB0E1E941FD783E80003D7E5 /* SocketNamespacePacketTest.swift in Sources */,
+				AB0E1E901FD783E80003D7E5 /* SocketIOClientConfigurationTest.swift in Sources */,
 				AB417B2A1FD754B20056CA6B /* SocketDemoTests.swift in Sources */,
+				AB0E1E8F1FD783E80003D7E5 /* SocketBasicPacketTest.swift in Sources */,
+				AB0E1E931FD783E80003D7E5 /* SocketMangerTest.swift in Sources */,
+				AB0E1E921FD783E80003D7E5 /* SocketAckManagerTest.swift in Sources */,
+				AB0E1E951FD783E80003D7E5 /* SocketParserTest.swift in Sources */,
+				AB0E1E961FD783E80003D7E5 /* SocketSideEffectTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +784,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QC422NX5T7;
 				INFOPLIST_FILE = SocketDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madhavi.SocketDemoTests;
@@ -769,6 +802,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QC422NX5T7;
 				INFOPLIST_FILE = SocketDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madhavi.SocketDemoTests;
@@ -785,6 +819,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QC422NX5T7;
 				INFOPLIST_FILE = SocketDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madhavi.SocketDemoUITests;
@@ -801,6 +836,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QC422NX5T7;
 				INFOPLIST_FILE = SocketDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madhavi.SocketDemoUITests;
