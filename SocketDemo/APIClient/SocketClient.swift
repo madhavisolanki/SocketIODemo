@@ -14,42 +14,42 @@ public class SocketClient {
    
     let  manager = SocketManager(socketURL: URL(string: "http://107.174.238.50:10015/")!, config: [.log(false)])
     var socket:SocketIOClient?
+    var user: User?
     
     func connect(){
         self.socket = manager.defaultSocket
         self.socket?.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
-        }
-        
-        self.socket?.on("currentAmount") {data, ack in
-            guard let cur = data[0] as? Double else { return }
-            
-            self.socket?.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
-                self.socket?.emit("update", ["amount": cur + 2.50])
+            self.socket?.emitWithAck("canUpdate", 1).timingOut(after: 0) {data in
+                self.socket?.emit("update", ["amount": 1 + 2.50])
             }
-            
             ack.with("Got your currentAmount", "dude")
+            self.retryLogin()
         }
         
         self.socket?.connect()
     }
-    func login(_ user:User){
-        let dict = [ "email":  user.email,
-                                                "password": user.password,
-                                                "device_type": user.device_type,
-                                                "device_token": "",
-                                                "user_lat": user.lat,
-                                                "user_long": user.long]
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-            
-        } catch {
-            print(error.localizedDescription)
-        }
+    
+    func retryLogin() {
+        let sendData = [[ "email":  user?.email,
+                              "password": user?.password,
+                              "device_type": user?.device_type,
+                              "device_token": "",
+                              "user_lat": user?.lat,
+                              "user_long": user?.long]]
+        self.socket?.emit("login", ["test","test"])
     }
-}
+    
+    func login(_ user:User){
+        self.user = user
+    }
+
+    }
 
 
+// self.socket?.handleEvent("Login", data: sendData, isInternalMessage:true , withAck: 1)
+//self.socket?.on("AllDriverInfo") {data, ack in
+//    print("Hey \(data)")
+//}
 //Dict
 //["email": user.email,
 // "password": user.password,
